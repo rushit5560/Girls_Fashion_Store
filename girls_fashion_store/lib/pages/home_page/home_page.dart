@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:girls_fashion_store/common/custom_color.dart';
+import 'package:girls_fashion_store/common/drawer_widget.dart';
 import 'package:girls_fashion_store/common/img_url.dart';
 import 'package:girls_fashion_store/pages/home_page/popular_product_model.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -12,14 +13,10 @@ class HomePage extends StatefulWidget {
   const HomePage({Key? key, this.openDrawer}) : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState(openDrawer: openDrawer);
+  _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-
-  final void openDrawer;
-  _HomePageState({this.openDrawer});
-
 
 
   TextEditingController searchTextController = TextEditingController();
@@ -96,13 +93,13 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            print('Menu Button');
-            openDrawer;
-          },
-          icon: Icon(Icons.menu),
-        ),
+        // leading: IconButton(
+        //   onPressed: () {
+        //     print('Menu Button');
+        //     widget.openDrawer;
+        //   },
+        //   icon: Icon(Icons.menu),
+        // ),
         title: Image(
           image: AssetImage(ImgUrl.logo),
           color: Colors.black,
@@ -116,6 +113,8 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
+
+      drawer: DrawerWidget(),
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
         child: Padding(

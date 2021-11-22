@@ -6,24 +6,20 @@ import 'package:girls_fashion_store/pages/notification_page/notification_page.da
 import 'package:girls_fashion_store/pages/profile_page/profile_page.dart';
 
 class IndexPage extends StatefulWidget {
-  final openDrawer;
 
-  const IndexPage({Key? key, this.openDrawer}) : super(key: key);
+  const IndexPage({Key? key}) : super(key: key);
 
   @override
-  _IndexPageState createState() => _IndexPageState(openDrawer: openDrawer);
+  _IndexPageState createState() => _IndexPageState();
 }
 
 class _IndexPageState extends State<IndexPage> {
 
 
-  final openDrawer;
-  _IndexPageState({this.openDrawer});
-
   int _currentIndex = 0;
 
   final tabs = [
-    HomePage(/*openDrawer: openDrawer*/),
+    HomePage(),
     NotificationPage(),
     CartPage(),
     FavoritePage(),

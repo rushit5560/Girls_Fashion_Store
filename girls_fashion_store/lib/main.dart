@@ -97,7 +97,7 @@ class _MainPageState extends State<MainPage> {
             absorbing: isDrawerOpen!,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(isDrawerOpen! ? 20 : 0),
-              child: IndexPage(openDrawer: openDrawer),
+              child: IndexPage(),
             ),
           ),
         ),
