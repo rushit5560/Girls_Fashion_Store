@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:girls_fashion_store/common/app_theme.dart';
-import 'package:girls_fashion_store/pages/index_page/index_page.dart';
-
+import 'package:girls_fashion_store/screens/index_screen/index_screen.dart';
 import 'common/app_color.dart';
 import 'common/drawer_widget.dart';
 
@@ -97,7 +96,7 @@ class _MainPageState extends State<MainPage> {
             absorbing: isDrawerOpen!,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(isDrawerOpen! ? 20 : 0),
-              child: IndexPage(),
+              child: IndexScreen(),
             ),
           ),
         ),
