@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:girls_fashion_store/common/custom_color.dart';
+import 'package:girls_fashion_store/common/app_color.dart';
 import 'package:girls_fashion_store/common/img_url.dart';
 
 import 'order_model.dart';
@@ -153,7 +153,7 @@ class OrderPage extends StatelessWidget {
                           Text(
                               '\$${orderItems[index].productActivePrice}',
                             style: TextStyle(
-                              color: CustomColor.kPinkColor,
+                              color: AppColor.kPinkColor,
                               fontWeight: FontWeight.bold,
                             ),
                           ),

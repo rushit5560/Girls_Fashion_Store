@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:girls_fashion_store/common/custom_color.dart';
+import 'package:girls_fashion_store/common/app_color.dart';
 import 'package:girls_fashion_store/common/img_url.dart';
 import 'package:girls_fashion_store/pages/signup_page/signup_page.dart';
 
@@ -61,7 +61,7 @@ class SignInPage extends StatelessWidget {
       child: Container(
         width: Get.width,
         decoration: BoxDecoration(
-          color: CustomColor.kPinkColor,
+          color: AppColor.kPinkColor,
           borderRadius: BorderRadius.circular(15),
         ),
         child: Padding(

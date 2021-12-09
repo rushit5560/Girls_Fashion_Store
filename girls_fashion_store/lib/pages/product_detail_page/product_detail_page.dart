@@ -3,12 +3,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
-import 'package:girls_fashion_store/common/custom_color.dart';
+import 'package:girls_fashion_store/common/app_color.dart';
 import 'package:girls_fashion_store/common/custom_widget.dart';
 import 'package:girls_fashion_store/common/img_url.dart';
 import 'package:girls_fashion_store/pages/cart_page/cart_page.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
 import 'rating_model.dart';
 
 class ProductDetailPage extends StatefulWidget {
@@ -80,9 +79,9 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            spacerHeight(10),
+            SpacerHeight(10),
             productImgModule(),
-            spacerHeight(10),
+            SpacerHeight(10),
             productDetails(),
           ],
         ),
@@ -162,7 +161,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
       effect: WormEffect(
         dotHeight: 11,
         dotWidth: 11,
-        activeDotColor: CustomColor.kPinkColor,
+        activeDotColor: AppColor.kPinkColor,
         dotColor: Colors.grey,
       ),
     );
@@ -184,14 +183,14 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
               fontSize: 15,
             ),
           ),
-          spacerHeight(5),
+          SpacerHeight(5),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               RatingBar.builder(
                 itemCount: 5,
                 ignoreGestures: true,
-                unratedColor: CustomColor.kLightOrangeColor,
+                unratedColor: AppColor.kLightOrangeColor,
                 allowHalfRating: true,
                 itemSize: 18,
                 minRating: 1,
@@ -200,14 +199,14 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                 itemBuilder: (context, _) {
                   return Icon(
                     Icons.star_rounded,
-                    color: CustomColor.kOrangeColor,
+                    color: AppColor.kOrangeColor,
                   );
                 },
                 onRatingUpdate: (rating) {
                   print(rating);
                 },
               ),
-              spacerWidth(5),
+              SpacerWidth(5),
               Text(
                 '(250 Reviews)',
                 style: TextStyle(
@@ -216,7 +215,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
               ),
             ],
           ),
-          spacerHeight(5),
+          SpacerHeight(5),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -224,10 +223,10 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                 '\$200',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  color: CustomColor.kPinkColor,
+                  color: AppColor.kPinkColor,
                 ),
               ),
-              spacerWidth(8),
+              SpacerWidth(8),
               Text(
                 '\$250',
                 style: TextStyle(
@@ -236,20 +235,20 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
               ),
             ],
           ),
-          spacerHeight(10),
-          customDivider(),
+          SpacerHeight(10),
+          CustomDivider(),
           colorOptions(),
-          customDivider(),
+          CustomDivider(),
           sizeOptions(),
-          customDivider(),
+          CustomDivider(),
           qtyOptions(),
-          customDivider(),
+          CustomDivider(),
           cartAndBuyButton(),
-          spacerHeight(15),
+          SpacerHeight(15),
           productRating(),
-          spacerHeight(15),
+          SpacerHeight(15),
           allRatings(),
-          spacerHeight(15),
+          SpacerHeight(15),
           leaveComment(),
         ],
       ),
@@ -293,7 +292,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                     child: Container(
                       padding: activeColor == index ?  EdgeInsets.all(2) : EdgeInsets.all(0),
                       decoration: BoxDecoration(
-                        color: CustomColor.kPinkColor,
+                        color: AppColor.kPinkColor,
                         shape: BoxShape.circle,
                       ),
                       child: Container(
@@ -351,7 +350,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                     child: Container(
                       width: 34,
                       decoration: BoxDecoration(
-                        border: activeSize == index ? Border.all( color: CustomColor.kPinkColor) :Border.all( color: Colors.black),
+                        border: activeSize == index ? Border.all( color: AppColor.kPinkColor) :Border.all( color: Colors.black),
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(3),
@@ -359,7 +358,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                           child: Text(
                             sizeList[index],
                             style: TextStyle(
-                              color: activeSize == index ? CustomColor.kPinkColor : Colors.black,
+                              color: activeSize == index ? AppColor.kPinkColor : Colors.black,
                             ),
                           ),
                         ),
@@ -420,9 +419,9 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                       ),
                     ),
                   ),
-                  spacerWidth(8),
+                  SpacerWidth(8),
                   Text('$qty'),
-                  spacerWidth(8),
+                  SpacerWidth(8),
                   GestureDetector(
                     onTap: () {
                       setState(() {
@@ -461,7 +460,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
           child: Container(
             // width: Get.width * 0.30,
             decoration: BoxDecoration(
-              color: CustomColor.kPinkColor,
+              color: AppColor.kPinkColor,
               borderRadius: BorderRadius.circular(30),
             ),
             child: Center(
@@ -481,7 +480,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
           ),
         ),
 
-        spacerWidth(10),
+        SpacerWidth(10),
 
         GestureDetector(
           onTap: (){
@@ -530,7 +529,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
             RatingBar.builder(
               itemCount: 5,
               ignoreGestures: true,
-              unratedColor: CustomColor.kLightOrangeColor,
+              unratedColor: AppColor.kLightOrangeColor,
               allowHalfRating: true,
               itemSize: 18,
               minRating: 1,
@@ -539,7 +538,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
               itemBuilder: (context, _) {
                 return Icon(
                   Icons.star_rounded,
-                  color: CustomColor.kOrangeColor,
+                  color: AppColor.kOrangeColor,
                 );
               },
               onRatingUpdate: (rating) {
@@ -565,7 +564,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
               'All Ratings',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
             ),
-            spacerHeight(10),
+            SpacerHeight(10),
             ListView.builder(
               physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
@@ -585,7 +584,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                           image: AssetImage(ratingLists[index].userProfilePic),
                         ),
                       ),
-                      spacerWidth(10),
+                      SpacerWidth(10),
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -600,11 +599,11 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                                     fontSize: 15
                                   ),
                                 ),
-                                spacerWidth(10),
+                                SpacerWidth(10),
                                 RatingBar.builder(
                                   itemCount: 5,
                                   ignoreGestures: true,
-                                  unratedColor: CustomColor.kLightOrangeColor,
+                                  unratedColor: AppColor.kLightOrangeColor,
                                   allowHalfRating: true,
                                   itemSize: 18,
                                   minRating: 1,
@@ -613,7 +612,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                                   itemBuilder: (context, _) {
                                     return Icon(
                                       Icons.star_rounded,
-                                      color: CustomColor.kOrangeColor,
+                                      color: AppColor.kOrangeColor,
                                     );
                                   },
                                   onRatingUpdate: (rating) {
@@ -657,11 +656,11 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
             fontWeight: FontWeight.bold, fontSize: 15
           ),
         ),
-        spacerHeight(8),
+        SpacerHeight(8),
         RatingBar.builder(
           itemCount: 5,
           // ignoreGestures: true,
-          unratedColor: CustomColor.kLightOrangeColor,
+          unratedColor: AppColor.kLightOrangeColor,
           allowHalfRating: true,
           itemSize: 18,
           minRating: 0,
@@ -670,7 +669,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
           itemBuilder: (context, _) {
             return Icon(
               Icons.star_rounded,
-              color: CustomColor.kOrangeColor,
+              color: AppColor.kOrangeColor,
             );
           },
           onRatingUpdate: (rating) {
@@ -678,9 +677,9 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
             print(rating);
           },
         ),
-        spacerHeight(8),
+        SpacerHeight(8),
         Text('Your Comment'),
-        spacerHeight(8),
+        SpacerHeight(8),
 
         TextFormField(
           maxLines: 3,
@@ -695,7 +694,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
             ),
           ),
         ),
-        spacerHeight(8),
+        SpacerHeight(8),
 
         GestureDetector(
           onTap: (){
@@ -711,7 +710,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
           child: Container(
             width: Get.width * 0.35,
             decoration: BoxDecoration(
-              color: CustomColor.kPinkColor,
+              color: AppColor.kPinkColor,
               borderRadius: BorderRadius.circular(30),
             ),
             child: Center(

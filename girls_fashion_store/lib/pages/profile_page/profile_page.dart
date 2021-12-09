@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:girls_fashion_store/common/custom_color.dart';
+import 'package:girls_fashion_store/common/app_color.dart';
 import 'package:girls_fashion_store/common/img_url.dart';
 import 'package:girls_fashion_store/pages/contact_us_page/contact_us_page.dart';
 import 'package:girls_fashion_store/pages/setting_page/setting_page.dart';
@@ -67,7 +67,7 @@ class ProfilePage extends StatelessWidget {
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                          color: CustomColor.kPinkColor,
+                          color: AppColor.kPinkColor,
                           fontSize: 19,
                           fontWeight: FontWeight.bold,
                         ),
@@ -252,7 +252,7 @@ class ProfilePage extends StatelessWidget {
                 width: Get.width * 0.30,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
-                  color: CustomColor.kPinkColor,
+                  color: AppColor.kPinkColor,
                 ),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
@@ -307,7 +307,7 @@ class ProfilePage extends StatelessWidget {
     return TextFormField(
       maxLines: 1,
       controller: cardNumberController,
-      cursorColor: CustomColor.kPinkColor,
+      cursorColor: AppColor.kPinkColor,
       maxLength: 16,
       keyboardType: TextInputType.number,
       validator: (value){
@@ -342,7 +342,7 @@ class ProfilePage extends StatelessWidget {
     return TextFormField(
       maxLines: 1,
       controller: expDateController,
-      cursorColor: CustomColor.kPinkColor,
+      cursorColor: AppColor.kPinkColor,
       maxLength: 5,
       keyboardType: TextInputType.datetime,
       validator: (value){
@@ -377,7 +377,7 @@ class ProfilePage extends StatelessWidget {
     return TextFormField(
       maxLines: 1,
       controller: cvvController,
-      cursorColor: CustomColor.kPinkColor,
+      cursorColor: AppColor.kPinkColor,
       maxLength: 3,
       keyboardType: TextInputType.number,
       validator: (value){
@@ -412,7 +412,7 @@ class ProfilePage extends StatelessWidget {
     return TextFormField(
       maxLines: 1,
       controller: nameOfCardController,
-      cursorColor: CustomColor.kPinkColor,
+      cursorColor: AppColor.kPinkColor,
       validator: (value){
         if(value!.isEmpty){
           return 'Enter Card Holder Name';
@@ -531,7 +531,7 @@ class ProfilePage extends StatelessWidget {
                               // height: 50,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(30),
-                                color: CustomColor.kPinkColor,
+                                color: AppColor.kPinkColor,
                               ),
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),

@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:girls_fashion_store/common/custom_color.dart';
+import 'package:girls_fashion_store/common/app_color.dart';
 import 'package:girls_fashion_store/common/drawer_widget.dart';
 import 'package:girls_fashion_store/common/img_url.dart';
 import 'package:girls_fashion_store/pages/home_page/popular_product_model.dart';
@@ -175,7 +175,7 @@ class _HomePageState extends State<HomePage> {
                   },
                   child: Icon(
                     Icons.search_rounded,
-                    color: CustomColor.kPinkColor,
+                    color: AppColor.kPinkColor,
                   ),
                 ),
               ),
@@ -245,7 +245,7 @@ class _HomePageState extends State<HomePage> {
       effect: WormEffect(
         dotHeight: 11,
         dotWidth: 11,
-        activeDotColor: CustomColor.kPinkColor,
+        activeDotColor: AppColor.kPinkColor,
         dotColor: Colors.grey,
       ),
     );
@@ -316,7 +316,7 @@ class _HomePageState extends State<HomePage> {
               child: Text(
                 'View All',
                 style: TextStyle(
-                  color: CustomColor.kPinkColor,
+                  color: AppColor.kPinkColor,
                   decoration: TextDecoration.underline,
                 ),
               ),
@@ -371,7 +371,7 @@ class _HomePageState extends State<HomePage> {
                             RatingBar.builder(
                               itemCount: 5,
                               ignoreGestures: true,
-                              unratedColor: CustomColor.kLightOrangeColor,
+                              unratedColor: AppColor.kLightOrangeColor,
                               allowHalfRating: true,
                               itemSize: 20,
                               minRating: 1,
@@ -380,7 +380,7 @@ class _HomePageState extends State<HomePage> {
                               itemBuilder: (context, _) {
                                 return Icon(
                                   Icons.star_rounded,
-                                  color: CustomColor.kOrangeColor,
+                                  color: AppColor.kOrangeColor,
                                 );
                               },
                               onRatingUpdate: (rating) {
@@ -392,7 +392,7 @@ class _HomePageState extends State<HomePage> {
                               '\$${popularProductLists[index].productPrice}',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: CustomColor.kPinkColor,
+                                color: AppColor.kPinkColor,
                               ),
                             )
                           ],
@@ -409,7 +409,7 @@ class _HomePageState extends State<HomePage> {
                                 });
                                 },
                               icon: popularProductLists[index].isFavorite! ? Icon(Icons.favorite_rounded) : Icon(Icons.favorite_border_rounded),
-                              color: CustomColor.kPinkColor,
+                              color: AppColor.kPinkColor,
                               iconSize: 20,
                             ),
                           ),
@@ -490,7 +490,7 @@ class _HomePageState extends State<HomePage> {
                             RatingBar.builder(
                               itemCount: 5,
                               ignoreGestures: true,
-                              unratedColor: CustomColor.kLightOrangeColor,
+                              unratedColor: AppColor.kLightOrangeColor,
                               allowHalfRating: true,
                               itemSize: 18,
                               minRating: 1,
@@ -499,7 +499,7 @@ class _HomePageState extends State<HomePage> {
                               itemBuilder: (context, _) {
                                 return Icon(
                                   Icons.star_rounded,
-                                  color: CustomColor.kOrangeColor,
+                                  color: AppColor.kOrangeColor,
                                 );
                               },
                               onRatingUpdate: (rating) {
@@ -511,7 +511,7 @@ class _HomePageState extends State<HomePage> {
                               '\$${mostSaleList[index].productPrice}',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: CustomColor.kPinkColor,
+                                color: AppColor.kPinkColor,
                               ),
                             ),
                           ],

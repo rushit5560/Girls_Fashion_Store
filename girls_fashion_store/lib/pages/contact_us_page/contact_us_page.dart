@@ -1,9 +1,8 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:girls_fashion_store/common/custom_color.dart';
+import 'package:girls_fashion_store/common/app_color.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class ContactUsPage extends StatelessWidget {
@@ -203,7 +202,7 @@ class ContactUsPage extends StatelessWidget {
         child: Container(
           width: Get.width,
           decoration: BoxDecoration(
-              color: CustomColor.kPinkColor,
+              color: AppColor.kPinkColor,
               borderRadius: BorderRadius.circular(25)),
           child: Center(
               child: Padding(

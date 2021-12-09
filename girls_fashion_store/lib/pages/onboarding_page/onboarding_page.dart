@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:girls_fashion_store/common/custom_color.dart';
+import 'package:girls_fashion_store/common/app_color.dart';
 import 'package:girls_fashion_store/common/custom_widget.dart';
 import 'package:girls_fashion_store/pages/onboarding_page/onboarding_controller.dart';
 
@@ -46,7 +46,7 @@ class OnBoardingPage extends StatelessWidget {
                           color: Colors.white
                         ),
                       ),
-                      spacerHeight(15),
+                      SpacerHeight(15),
                       Padding(
                         padding: const EdgeInsets.only(right: 12),
                         child: Text(
@@ -75,7 +75,7 @@ class OnBoardingPage extends StatelessWidget {
                     decoration: BoxDecoration(
                         color: onBoardingController.selectedPageIndex.value ==
                             index
-                            ? CustomColor.kPinkColor
+                            ? AppColor.kPinkColor
                             : Colors.white,
                         shape: BoxShape.circle),
                   ),
@@ -88,7 +88,7 @@ class OnBoardingPage extends StatelessWidget {
             bottom: 25,
             child: FloatingActionButton(
               elevation: 0,
-              backgroundColor: CustomColor.kPinkColor,
+              backgroundColor: AppColor.kPinkColor,
               onPressed: onBoardingController.forwardAction,
               child: Obx(
                     () => Text(

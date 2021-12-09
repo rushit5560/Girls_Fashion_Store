@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:girls_fashion_store/common/custom_color.dart';
+import 'package:girls_fashion_store/common/app_color.dart';
 import 'package:girls_fashion_store/common/img_url.dart';
 import 'collection_model.dart';
 
@@ -122,7 +122,7 @@ class _CollectionPageState extends State<CollectionPage> {
                               RatingBar.builder(
                                 itemCount: 5,
                                 ignoreGestures: true,
-                                unratedColor: CustomColor.kLightOrangeColor,
+                                unratedColor: AppColor.kLightOrangeColor,
                                 allowHalfRating: true,
                                 itemSize: 20,
                                 minRating: 1,
@@ -131,7 +131,7 @@ class _CollectionPageState extends State<CollectionPage> {
                                 itemBuilder: (context, _) {
                                   return Icon(
                                     Icons.star_rounded,
-                                    color: CustomColor.kOrangeColor,
+                                    color: AppColor.kOrangeColor,
                                   );
                                 },
                                 onRatingUpdate: (rating) {
@@ -143,7 +143,7 @@ class _CollectionPageState extends State<CollectionPage> {
                                 '\$${collectionLists[index].productPrice}',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  color: CustomColor.kPinkColor,
+                                  color: AppColor.kPinkColor,
                                 ),
                               )
                             ],
@@ -160,7 +160,7 @@ class _CollectionPageState extends State<CollectionPage> {
                                   });
                                 },
                                 icon: collectionLists[index].isFavorite! ? Icon(Icons.favorite_rounded) : Icon(Icons.favorite_border_rounded),
-                                color: CustomColor.kPinkColor,
+                                color: AppColor.kPinkColor,
                                 iconSize: 20,
                               ),
                             ),

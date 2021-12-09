@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:girls_fashion_store/common/custom_color.dart';
+import 'package:girls_fashion_store/common/app_color.dart';
 import 'package:girls_fashion_store/common/custom_widget.dart';
 import 'package:girls_fashion_store/common/img_url.dart';
 
@@ -35,9 +34,9 @@ class _CheckOutPageState extends State<CheckOutPage> {
           children: [
 
             billingInfo(),
-            spacerHeight(35),
+            SpacerHeight(35),
             paymentMethod(),
-            spacerHeight(30),
+            SpacerHeight(30),
             confirmButton(),
           ],
         ),
@@ -65,17 +64,17 @@ class _CheckOutPageState extends State<CheckOutPage> {
                       fontSize: 15,
                     ),
                   ),
-                  spacerHeight(5),
-                  customDivider(),
-                  spacerHeight(5),
+                  SpacerHeight(5),
+                  CustomDivider(),
+                  SpacerHeight(5),
                   nameField(),
-                  spacerHeight(15),
+                  SpacerHeight(15),
                   emailField(),
-                  spacerHeight(15),
+                  SpacerHeight(15),
                   phoneNoField(),
-                  spacerHeight(15),
+                  SpacerHeight(15),
                   shippingAddressField(),
-                  spacerHeight(15),
+                  SpacerHeight(15),
                 ],
               ),
             ),
@@ -93,7 +92,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
           padding: const EdgeInsets.only(left: 8),
           child: Text('Name'),
         ),
-        spacerHeight(8),
+        SpacerHeight(8),
         TextFormField(
           cursorColor: Colors.black,
           controller: nameController,
@@ -131,7 +130,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
           padding: const EdgeInsets.only(left: 8),
           child: Text('Email Address'),
         ),
-        spacerHeight(8),
+        SpacerHeight(8),
         TextFormField(
           cursorColor: Colors.black,
           controller: emailController,
@@ -173,7 +172,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
           padding: const EdgeInsets.only(left: 8),
           child: Text('Phone No.'),
         ),
-        spacerHeight(8),
+        SpacerHeight(8),
         TextFormField(
           cursorColor: Colors.black,
           controller: phoneNoController,
@@ -217,7 +216,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
           padding: const EdgeInsets.only(left: 8),
           child: Text('Shipping Address'),
         ),
-        spacerHeight(8),
+        SpacerHeight(8),
         TextFormField(
           cursorColor: Colors.black,
           controller: shippingAddressController,
@@ -265,9 +264,9 @@ class _CheckOutPageState extends State<CheckOutPage> {
                     fontSize: 15,
                   ),
                 ),
-                spacerHeight(5),
-                customDivider(),
-                spacerHeight(5),
+                SpacerHeight(5),
+                CustomDivider(),
+                SpacerHeight(5),
 
                 Row(
                   children: [
@@ -402,7 +401,7 @@ class _CheckOutPageState extends State<CheckOutPage> {
                 },
                 child: Container(
                   decoration: BoxDecoration(
-                      color: CustomColor.kPinkColor,
+                      color: AppColor.kPinkColor,
                       borderRadius: BorderRadius.circular(30)
                   ),
                   child: Padding(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:girls_fashion_store/common/custom_color.dart';
+import 'package:girls_fashion_store/common/app_color.dart';
 import 'package:girls_fashion_store/common/img_url.dart';
 import 'package:girls_fashion_store/pages/checkout_page/checkout_page.dart';
 
@@ -130,7 +130,7 @@ class CartPage extends StatelessWidget {
                                       Text(
                                         '\$${cartItemList[index].productActivePrice}',
                                         style: TextStyle(
-                                          color: CustomColor.kPinkColor,
+                                          color: AppColor.kPinkColor,
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
@@ -238,7 +238,7 @@ class CartPage extends StatelessWidget {
                     spacerWidth(12),
                     Container(
                       decoration: BoxDecoration(
-                        color: CustomColor.kPinkColor,
+                        color: AppColor.kPinkColor,
                         borderRadius: BorderRadius.circular(30)
                       ),
                       child: Padding(
@@ -287,7 +287,7 @@ class CartPage extends StatelessWidget {
                 },
                 child: Container(
                   decoration: BoxDecoration(
-                      color: CustomColor.kPinkColor,
+                      color: AppColor.kPinkColor,
                       borderRadius: BorderRadius.circular(30)
                   ),
                   child: Padding(

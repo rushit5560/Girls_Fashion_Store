@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:girls_fashion_store/common/custom_color.dart';
+import 'package:girls_fashion_store/common/app_color.dart';
 
 class SettingPage extends StatefulWidget {
   const SettingPage({Key? key}) : super(key: key);
@@ -73,7 +72,7 @@ class _SettingPageState extends State<SettingPage> {
               Transform.scale(
                 scale: 0.7,
                 child: CupertinoSwitch(
-                  activeColor: CustomColor.kPinkColor,
+                  activeColor: AppColor.kPinkColor,
                   trackColor: Colors.grey,
                   value: _availability,
                   onChanged: (value) {
@@ -116,7 +115,7 @@ class _SettingPageState extends State<SettingPage> {
               Transform.scale(
                 scale: 0.7,
                 child: CupertinoSwitch(
-                  activeColor: CustomColor.kPinkColor,
+                  activeColor: AppColor.kPinkColor,
                   trackColor: Colors.grey,
                   value: _notification,
                   onChanged: (value) {
@@ -159,7 +158,7 @@ class _SettingPageState extends State<SettingPage> {
               Transform.scale(
                 scale: 0.7,
                 child: CupertinoSwitch(
-                  activeColor: CustomColor.kPinkColor,
+                  activeColor: AppColor.kPinkColor,
                   trackColor: Colors.grey,
                   value: _sendSMS,
                   onChanged: (value) {
@@ -202,7 +201,7 @@ class _SettingPageState extends State<SettingPage> {
               Transform.scale(
                 scale: 0.7,
                 child: CupertinoSwitch(
-                  activeColor: CustomColor.kPinkColor,
+                  activeColor: AppColor.kPinkColor,
                   trackColor: Colors.grey,
                   value: _nightMode,
                   onChanged: (value) {

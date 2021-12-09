@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:girls_fashion_store/common/app_theme.dart';
-import 'package:girls_fashion_store/common/custom_color.dart';
 import 'package:girls_fashion_store/pages/index_page/index_page.dart';
 
+import 'common/app_color.dart';
 import 'common/drawer_widget.dart';
 
 
@@ -64,7 +64,7 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: CustomColor.kPinkColor,
+      backgroundColor: AppColor.kPinkColor,
         body: Stack(
           children: [
             buildDrawer(),
