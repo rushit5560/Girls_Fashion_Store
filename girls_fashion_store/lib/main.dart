@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:girls_fashion_store/common/app_theme.dart';
 import 'package:girls_fashion_store/screens/index_screen/index_screen.dart';
+import 'package:girls_fashion_store/screens/splash_screen/splash_screen.dart';
 import 'common/app_color.dart';
 import 'common/drawer_widget.dart';
 
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
       title: 'Girls Fashion Store',
       debugShowCheckedModeBanner: false,
       theme: appTheme(),
-      home: MainPage(),
+      home: SplashScreen(),
     );
   }
 }

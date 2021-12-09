@@ -22,9 +22,20 @@ class SpacerWidth extends StatelessWidget {
 }
 
 class CustomDivider extends StatelessWidget {
-  const CustomDivider();
+  final thickness;
+  final color;
+  final indent;
+  final endIndent;
+
+  CustomDivider({this.thickness, this.color, this.indent, this.endIndent});
+
   @override
   Widget build(BuildContext context) {
-    return Divider(thickness: 1);
+    return Divider(
+      thickness: thickness ?? 1,
+      color: color ?? Colors.black,
+      indent: indent ?? 0.0,
+      endIndent: endIndent ?? 0.0,
+    );
   }
 }
