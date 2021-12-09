@@ -39,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Stack(
         children: [
           buildDrawer(),
-          buildPage(),
+          buildFrontScreen(),
         ],
       ),
     );
@@ -47,17 +47,18 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget buildDrawer() => SafeArea(child: DrawerWidget());
 
-  Widget buildPage() {
+  Widget buildFrontScreen() {
     return GestureDetector(
       onTap: () {
-        FocusManager.instance.primaryFocus!.unfocus();
         closeDrawer();
       },
       child: AnimatedContainer(
         duration: Duration(milliseconds: 500),
         transform: Matrix4.translationValues(xOffset, yOffset, scaleFactor)
           ..scale(scaleFactor),
-        child: BuildNewPage(openDrawer: openDrawer),
+        child: AbsorbPointer(
+            absorbing: isDrawerOpen,
+            child: BuildNewPage(openDrawer: openDrawer)),
       ),
     );
   }
@@ -122,7 +123,10 @@ class DrawerMenuWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      onPressed: () => openDrawer(),
+      onPressed: () {
+        FocusManager.instance.primaryFocus!.unfocus();
+        openDrawer();
+      },
       icon: Icon(Icons.menu_rounded, color: Colors.black,),
     );
   }
