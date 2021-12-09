@@ -116,14 +116,16 @@ class BannerIndicatorModule extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedSmoothIndicator(
-      activeIndex: homeScreenController.activeIndex.value,
-      count: homeScreenController.bannerList.length,
-      effect: WormEffect(
-        dotHeight: 11,
-        dotWidth: 11,
-        activeDotColor: AppColor.kPinkColor,
-        dotColor: Colors.grey,
+    return Obx(
+      ()=> AnimatedSmoothIndicator(
+        activeIndex: homeScreenController.activeIndex.value,
+        count: homeScreenController.bannerList.length,
+        effect: WormEffect(
+          dotHeight: 11,
+          dotWidth: 11,
+          activeDotColor: AppColor.kPinkColor,
+          dotColor: Colors.grey,
+        ),
       ),
     );
   }

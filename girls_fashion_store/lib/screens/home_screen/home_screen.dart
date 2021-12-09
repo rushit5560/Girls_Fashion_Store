@@ -7,7 +7,6 @@ import 'package:girls_fashion_store/controllers/home_screen_controller/home_scre
 import 'home_screen_widgets.dart';
 
 class HomeScreen extends StatefulWidget {
-
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }

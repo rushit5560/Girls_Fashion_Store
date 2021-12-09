@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:girls_fashion_store/common/app_color.dart';
+import 'package:girls_fashion_store/screens/signin_screen/signin_screen.dart';
 import 'custom_widget.dart';
 import 'img_url.dart';
 
@@ -42,6 +43,9 @@ class DrawerWidget extends StatelessWidget {
 
                   CustomDivider(color: Colors.white, indent: 8.0, endIndent: Get.width * 0.55),
                   SettingsModule(),
+
+                  CustomDivider(color: Colors.white, indent: 8.0, endIndent: Get.width * 0.55),
+                  LoginModule(),
 
                 ],
               ),
@@ -257,6 +261,28 @@ class SettingsModule extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Text(
           'Settings',
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class LoginModule extends StatelessWidget {
+  const LoginModule({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Get.to(()=> SignInScreen());
+      },
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 20,right: 8, left: 8, top: 8),
+        child: Text(
+          'LogIn',
           style: TextStyle(
             color: Colors.white,
           ),
