@@ -12,36 +12,39 @@ class DrawerWidget extends StatelessWidget {
       color: AppColor.kPinkColor,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisSize: MainAxisSize.max,
         children: [
-          Container(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+          SingleChildScrollView(
+            child: Container(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SpacerHeight(35),
+                  ProfileImageAndNameModule(),
 
-                ProfileImageAndNameModule(),
+                  const SpacerHeight(30),
+                  HomeModule(),
 
-                const SpacerHeight(30),
-                HomeModule(),
+                  CustomDivider(color: Colors.white, indent: 8.0, endIndent: Get.width * 0.55),
+                  NotificationModule(),
 
-                CustomDivider(color: Colors.white, indent: 8.0, endIndent: Get.width * 0.55),
-                NotificationModule(),
+                  CustomDivider(color: Colors.white, indent: 8.0, endIndent: Get.width * 0.55),
+                  CollectionModule(),
 
-                CustomDivider(color: Colors.white, indent: 8.0, endIndent: Get.width * 0.55),
-                CollectionModule(),
+                  CustomDivider(color: Colors.white, indent: 8.0, endIndent: Get.width * 0.55),
+                  MyOrderModule(),
 
-                CustomDivider(color: Colors.white, indent: 8.0, endIndent: Get.width * 0.55),
-                MyOrderModule(),
+                  CustomDivider(color: Colors.white, indent: 8.0, endIndent: Get.width * 0.55),
+                  ProfileModule(),
 
-                CustomDivider(color: Colors.white, indent: 8.0, endIndent: Get.width * 0.55),
-                ProfileModule(),
+                  CustomDivider(color: Colors.white, indent: 8.0, endIndent: Get.width * 0.55),
+                  ContactUsModule(),
 
-                CustomDivider(color: Colors.white, indent: 8.0, endIndent: Get.width * 0.55),
-                ContactUsModule(),
+                  CustomDivider(color: Colors.white, indent: 8.0, endIndent: Get.width * 0.55),
+                  SettingsModule(),
 
-                CustomDivider(color: Colors.white, indent: 8.0, endIndent: Get.width * 0.55),
-                SettingsModule(),
-
-              ],
+                ],
+              ),
             ),
           ),
 
