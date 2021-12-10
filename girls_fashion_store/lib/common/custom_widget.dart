@@ -137,3 +137,23 @@ class BackGroundImageWidget extends StatelessWidget {
     );
   }
 }
+
+
+InputDecoration couponInputDecoration() {
+  return InputDecoration(
+    isDense: true,
+    contentPadding: EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+    enabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(30),
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(30),
+    ),
+    errorBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(30),
+    ),
+    focusedErrorBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(30),
+    ),
+  );
+}
