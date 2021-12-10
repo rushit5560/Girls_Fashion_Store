@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
+import 'package:girls_fashion_store/common/api_url.dart';
 import 'package:girls_fashion_store/common/app_color.dart';
 import 'package:girls_fashion_store/common/custom_widget.dart';
 import 'package:girls_fashion_store/common/img_url.dart';
@@ -61,9 +62,10 @@ class BannerModule extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CarouselSlider.builder(
-      itemCount: homeScreenController.bannerList.length,
+      itemCount: homeScreenController.bannerLists.length,
       itemBuilder: (context, index, realIndex) {
-        final imgUrl = homeScreenController.bannerList[index];
+        final imgUrl = ApiUrl.ApiMainPath +
+                        "${homeScreenController.bannerLists[index].imagePath}";
         return _buildImage(imgUrl, index);
       },
       options: CarouselOptions(
@@ -86,7 +88,7 @@ class BannerModule extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
             color: Colors.grey,
             image: DecorationImage(
-              image: AssetImage(imgUrl),
+              image: NetworkImage(imgUrl),
               fit: BoxFit.cover,
             ),
           ),
@@ -96,7 +98,7 @@ class BannerModule extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Container(
             child: Text(
-              homeScreenController.bannerListText[index],
+              'Fashion Trends $index',
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
@@ -119,7 +121,7 @@ class BannerIndicatorModule extends StatelessWidget {
     return Obx(
       ()=> AnimatedSmoothIndicator(
         activeIndex: homeScreenController.activeIndex.value,
-        count: homeScreenController.bannerList.length,
+        count: homeScreenController.bannerLists.length,
         effect: WormEffect(
           dotHeight: 11,
           dotWidth: 11,
