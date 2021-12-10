@@ -6,6 +6,7 @@ import 'package:girls_fashion_store/common/app_color.dart';
 import 'package:girls_fashion_store/common/custom_widget.dart';
 import 'package:girls_fashion_store/controllers/collection_screen_controller/collection_screen_controller.dart';
 import 'package:girls_fashion_store/models/collection_screen_model/collection_model.dart';
+import 'package:girls_fashion_store/screens/product_detail_screen/product_detail_screen.dart';
 
 final collectionScreenController = Get.find<CollectionScreenController>();
 
@@ -39,7 +40,9 @@ class CollectionListModule extends StatelessWidget {
         elevation: 8,
         borderRadius: BorderRadius.circular(10),
         child: GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Get.to(()=> ProductDetailScreen(), arguments: collectionSingleItem.id);
+          },
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
