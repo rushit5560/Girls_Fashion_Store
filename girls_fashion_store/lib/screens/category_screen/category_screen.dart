@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:girls_fashion_store/common/img_url.dart';
+import 'package:get/get.dart';
+import 'package:girls_fashion_store/common/custom_widget.dart';
+import 'package:girls_fashion_store/controllers/category_screen_controller/category_screen_controller.dart';
+import 'category_screen_widgets.dart';
 
 class CategoryScreen extends StatelessWidget {
-
-  List categoryList = [
-    ImgUrl.category1,ImgUrl.category2,ImgUrl.category3,
-    ImgUrl.category4,ImgUrl.category5,ImgUrl.category6,
-    ImgUrl.category7,ImgUrl.category8,ImgUrl.category9,
-    ImgUrl.category1,ImgUrl.category2,ImgUrl.category3,
-    ImgUrl.category4,ImgUrl.category5,ImgUrl.category6,
-    ImgUrl.category7,ImgUrl.category8,ImgUrl.category9,
-  ];
+  final  categoryScreenController = Get.put(CategoryScreenController());
 
   @override
   Widget build(BuildContext context) {
@@ -30,36 +25,13 @@ class CategoryScreen extends StatelessWidget {
           ),
         ],
       ),
-
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: GridView.builder(
-          itemCount: categoryList.length,
-          physics: BouncingScrollPhysics(),
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
-            mainAxisSpacing: 10,
-            crossAxisSpacing: 10,
-          ),
-          itemBuilder: (context, index) {
-            return Material(
-              elevation: 10,
-                borderRadius: BorderRadius.circular(12),
-                child: GestureDetector(
-                  onTap: () {
-                    print('Category $index');
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage(categoryList[index]),
-                      )
-                    ),
-                  ),
-                ),
-            );
-          },
-        ),
+      body: Obx(
+        () => categoryScreenController.isLoading.value
+            ? CustomCircularProgressIndicator()
+            : Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: CategoryListModule(),
+              ),
       ),
     );
   }

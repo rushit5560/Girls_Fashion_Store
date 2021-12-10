@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:girls_fashion_store/common/app_color.dart';
 import 'package:girls_fashion_store/controllers/home_screen_controller/home_screen_controller.dart';
+import 'package:girls_fashion_store/screens/category_screen/category_screen.dart';
 import 'package:girls_fashion_store/screens/collection_screen/collection_screen.dart';
 import 'package:girls_fashion_store/screens/contact_us_screen/contact_us_screen.dart';
 import 'package:girls_fashion_store/screens/notification_screen/notification_screen.dart';
@@ -23,58 +24,35 @@ class DrawerWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         mainAxisSize: MainAxisSize.max,
         children: [
-          SingleChildScrollView(
-            child: Container(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SpacerHeight(35),
-                  ProfileImageAndNameModule(),
-                  const SpacerHeight(30),
-                  HomeModule(),
-                  CustomDivider(
-                    color: Colors.white,
-                    indent: 8.0,
-                    endIndent: Get.width * 0.55,
-                  ),
-                  NotificationModule(),
-                  CustomDivider(
-                    color: Colors.white,
-                    indent: 8.0,
-                    endIndent: Get.width * 0.55,
-                  ),
-                  CollectionModule(),
-                  CustomDivider(
-                    color: Colors.white,
-                    indent: 8.0,
-                    endIndent: Get.width * 0.55,
-                  ),
-                  MyOrderModule(),
-                  CustomDivider(
-                    color: Colors.white,
-                    indent: 8.0,
-                    endIndent: Get.width * 0.55,
-                  ),
-                  ProfileModule(),
-                  CustomDivider(
-                    color: Colors.white,
-                    indent: 8.0,
-                    endIndent: Get.width * 0.55,
-                  ),
-                  ContactUsModule(),
-                  CustomDivider(
-                    color: Colors.white,
-                    indent: 8.0,
-                    endIndent: Get.width * 0.55,
-                  ),
-                  SettingsModule(),
-                  CustomDivider(
-                    color: Colors.white,
-                    indent: 8.0,
-                    endIndent: Get.width * 0.55,
-                  ),
-                  LoginModule(),
-                ],
+      Expanded(
+            child: SingleChildScrollView(
+              child: Container(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SpacerHeight(35),
+                    ProfileImageAndNameModule(),
+                    const SpacerHeight(30),
+                    HomeModule(),
+                    _customDivider(),
+                    NotificationModule(),
+                    _customDivider(),
+                    CategoryModule(),
+                    _customDivider(),
+                    CollectionModule(),
+                    _customDivider(),
+                    MyOrderModule(),
+                    _customDivider(),
+                    ProfileModule(),
+                    _customDivider(),
+                    ContactUsModule(),
+                    _customDivider(),
+                    SettingsModule(),
+                    _customDivider(),
+                    LoginModule(),
+
+                  ],
+                ),
               ),
             ),
           ),
@@ -82,17 +60,22 @@ class DrawerWidget extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CustomDivider(
-                    color: Colors.white,
-                    indent: 8.0,
-                    endIndent: Get.width * 0.55,
-                ),
+                _customDivider(),
                 LogOutModule(),
               ],
             ),
           ),
         ],
       ),
+    );
+  }
+
+
+  Widget _customDivider() {
+    return CustomDivider(
+      color: Colors.white,
+      indent: 8.0,
+      endIndent: Get.width * 0.55,
     );
   }
 }
@@ -199,6 +182,29 @@ class CollectionModule extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Text(
           'Collections',
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class CategoryModule extends StatelessWidget {
+  CategoryModule({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        homeScreenController.closeDrawer();
+        Get.to(()=> CategoryScreen());
+      },
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Text(
+          'Category',
           style: TextStyle(
             color: Colors.white,
           ),
