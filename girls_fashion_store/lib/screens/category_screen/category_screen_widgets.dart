@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:girls_fashion_store/common/api_url.dart';
 import 'package:girls_fashion_store/controllers/category_screen_controller/category_screen_controller.dart';
 import 'package:girls_fashion_store/models/category_screen_model/category_model.dart';
+import 'package:girls_fashion_store/screens/category_collection_screen/category_collection_screen.dart';
 
 final categoryScreenController = Get.find<CategoryScreenController>();
 
@@ -33,7 +34,14 @@ class CategoryListModule extends StatelessWidget {
       elevation: 10,
       borderRadius: BorderRadius.circular(12),
       child: GestureDetector(
-        onTap: () {},
+        onTap: () {
+          Get.to(()=> CategoryCollectionScreen(),
+            arguments: [
+              categorySingleItem.categoryId,
+              categorySingleItem.categoryName,
+            ],
+          );
+        },
         child: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
