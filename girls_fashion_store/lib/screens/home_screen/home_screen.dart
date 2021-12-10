@@ -12,6 +12,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Every Time Call Close Drawer Method
+    homeScreenController.closeDrawer();
     return Scaffold(
       body: Obx(
         () => homeScreenController.isLoading.value
