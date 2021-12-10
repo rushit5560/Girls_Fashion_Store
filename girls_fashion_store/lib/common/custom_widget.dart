@@ -121,3 +121,19 @@ class CustomCircularProgressIndicator extends StatelessWidget {
     );
   }
 }
+
+class BackGroundImageWidget extends StatelessWidget {
+  const BackGroundImageWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: Get.height,
+      width: Get.width,
+      child: Image(
+        image: AssetImage(ImgUrl.loginbg),
+        fit: BoxFit.cover,
+      ),
+    );
+  }
+}

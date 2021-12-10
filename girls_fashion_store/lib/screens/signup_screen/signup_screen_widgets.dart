@@ -3,12 +3,12 @@ import 'package:get/get.dart';
 import 'package:girls_fashion_store/common/app_color.dart';
 import 'package:girls_fashion_store/common/custom_widget.dart';
 import 'package:girls_fashion_store/common/field_validation.dart';
-import 'package:girls_fashion_store/controllers/sign_in_screen_controller/sign_in_screen_controller.dart';
-import 'package:girls_fashion_store/screens/signup_screen/signup_screen.dart';
+import 'package:girls_fashion_store/controllers/signup_screen_controller/signup_screen_controller.dart';
+import 'package:girls_fashion_store/screens/signin_screen/signin_screen.dart';
 
-class SignInDetailsModule extends StatelessWidget {
-  SignInDetailsModule({Key? key}) : super(key: key);
-  final signInScreenController = Get.find<SignInScreenController>();
+class SignUpDetailsModule extends StatelessWidget {
+  SignUpDetailsModule({Key? key}) : super(key: key);
+  final signUpScreenController = Get.find<SignUpScreenController>();
 
   @override
   Widget build(BuildContext context) {
@@ -23,20 +23,20 @@ class SignInDetailsModule extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(12),
           child: Form(
-            key: signInScreenController.formKey,
+            key: signUpScreenController.formKey,
             child: Column(
               children: [
-                SpacerHeight(20),
-                SignInAndSignUpTextModule(name: 'SignIn'),
-                SpacerHeight(20),
+                const SpacerHeight(20),
+                SignInAndSignUpTextModule(name: 'SignUp'),
+                const SpacerHeight(20),
+                UserNameField(),
+                const SpacerHeight(15),
                 EmailIdField(),
-                SpacerHeight(15),
+                const SpacerHeight(15),
                 PasswordField(),
-                SpacerHeight(18),
-                ForgotPasswordText(),
-                SpacerHeight(18),
-                LoginButton(),
-                SpacerHeight(20),
+                const SpacerHeight(18),
+                SignUpButton(),
+                const SpacerHeight(20),
               ],
             ),
           ),
@@ -46,14 +46,28 @@ class SignInDetailsModule extends StatelessWidget {
   }
 }
 
-class EmailIdField extends StatelessWidget {
-  EmailIdField({Key? key}) : super(key: key);
-  final signInScreenController = Get.find<SignInScreenController>();
+class UserNameField extends StatelessWidget {
+  final signUpScreenController = Get.find<SignUpScreenController>();
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      controller: signInScreenController.emailIdFieldController,
+      controller: signUpScreenController.userNameFieldController,
+      keyboardType: TextInputType.text,
+      cursorColor: Colors.black,
+      validator: (value) => FieldValidator().validateFullName(value!),
+      decoration: formInputDecoration('User Name'),
+    );
+  }
+}
+
+class EmailIdField extends StatelessWidget {
+  final signUpScreenController = Get.find<SignUpScreenController>();
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      controller: signUpScreenController.emailIdFieldController,
       keyboardType: TextInputType.emailAddress,
       cursorColor: Colors.black,
       validator: (value) => FieldValidator().validateEmail(value!),
@@ -63,13 +77,12 @@ class EmailIdField extends StatelessWidget {
 }
 
 class PasswordField extends StatelessWidget {
-  PasswordField({Key? key}) : super(key: key);
-  final signInScreenController = Get.find<SignInScreenController>();
+  final signUpScreenController = Get.find<SignUpScreenController>();
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      controller: signInScreenController.passwordFieldController,
+      controller: signUpScreenController.passwordFieldController,
       keyboardType: TextInputType.text,
       cursorColor: Colors.black,
       validator: (value) => FieldValidator().validatePassword(value!),
@@ -78,37 +91,19 @@ class PasswordField extends StatelessWidget {
   }
 }
 
-class ForgotPasswordText extends StatelessWidget {
-  const ForgotPasswordText({Key? key}) : super(key: key);
+class SignUpButton extends StatelessWidget {
+  SignUpButton({Key? key}) : super(key: key);
+  final signUpScreenController = Get.find<SignUpScreenController>();
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        print('Clicked On Forgot Password.');
-      },
-      child: Text(
-        'Forgot Password?',
-        style: TextStyle(
-          color: Colors.white,
-        ),
-      ),
-    );
-  }
-}
-
-class LoginButton extends StatelessWidget {
-  LoginButton({Key? key}) : super(key: key);
-  final signInScreenController = Get.find<SignInScreenController>();
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: (){
-        if(signInScreenController.formKey.currentState!.validate()){
-          signInScreenController.getSignInData(
-            "${signInScreenController.emailIdFieldController.text.trim().toLowerCase()}",
-            "${signInScreenController.passwordFieldController.text.trim()}",
+        if (signUpScreenController.formKey.currentState!.validate()) {
+          signUpScreenController.getRegisterData(
+            "${signUpScreenController.userNameFieldController.text.trim()}",
+            "${signUpScreenController.emailIdFieldController.text.trim().toLowerCase()}",
+            "${signUpScreenController.passwordFieldController.text.trim()}",
           );
         }
       },
@@ -122,11 +117,8 @@ class LoginButton extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 11),
           child: Center(
             child: Text(
-              'Login',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 15
-              ),
+              'SignUp',
+              style: TextStyle(color: Colors.white, fontSize: 15),
             ),
           ),
         ),
@@ -135,8 +127,8 @@ class LoginButton extends StatelessWidget {
   }
 }
 
-class SignUpText extends StatelessWidget {
-  const SignUpText({Key? key}) : super(key: key);
+class SignInText extends StatelessWidget {
+  const SignInText({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -146,7 +138,7 @@ class SignUpText extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            'Don\'t have account yet? ',
+            'Already have account? ',
             style: TextStyle(
               color: Colors.white,
               fontSize: 16,
@@ -154,10 +146,10 @@ class SignUpText extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              Get.off(()=> SignUpScreen());
+              Get.off(() => SignInScreen());
             },
             child: Text(
-              'Sign Up',
+              'Sign In',
               style: TextStyle(
                 color: Colors.white,
                 decoration: TextDecoration.underline,
