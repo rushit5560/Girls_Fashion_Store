@@ -36,9 +36,9 @@ class FieldValidator {
   String? validateMobile(String value) {
 // Indian Mobile number are of 10 digit only
     if (value.isEmpty) {
-      return "Mobile number is Required";
+      return "Phone number is Required";
     } else if (value.length != 10) {
-      return 'Mobile Number must be of 10 digit';
+      return 'Phone Number must be of 10 digit';
     } else {
       return null;
     }

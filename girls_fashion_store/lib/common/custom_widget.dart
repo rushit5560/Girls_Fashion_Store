@@ -139,21 +139,23 @@ class BackGroundImageWidget extends StatelessWidget {
 }
 
 
-InputDecoration couponInputDecoration() {
+InputDecoration couponInputDecoration(String hintText, double radius) {
   return InputDecoration(
     isDense: true,
+    hintText: '$hintText',
+    counterText: '',
     contentPadding: EdgeInsets.symmetric(horizontal: 20,vertical: 10),
     enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(30),
+      borderRadius: BorderRadius.circular(radius),
     ),
     focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(30),
+      borderRadius: BorderRadius.circular(radius),
     ),
     errorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(30),
+      borderRadius: BorderRadius.circular(radius),
     ),
     focusedErrorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(30),
+      borderRadius: BorderRadius.circular(radius),
     ),
   );
 }

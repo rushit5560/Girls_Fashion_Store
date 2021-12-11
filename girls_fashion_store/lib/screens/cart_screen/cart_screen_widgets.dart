@@ -201,7 +201,7 @@ class CouponCodeModule extends StatelessWidget {
                       child: TextFormField(
                         controller: cartScreenController.couponCodeFieldController,
                         cursorColor: Colors.black,
-                        decoration: couponInputDecoration(),
+                        decoration: couponInputDecoration('Coupon Code', 30),
                       ),
                     ),
                     const SpacerWidth(12),
