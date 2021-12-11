@@ -1,11 +1,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:girls_fashion_store/common/api_url.dart';
 import 'package:girls_fashion_store/common/app_color.dart';
 import 'package:girls_fashion_store/common/custom_widget.dart';
 import 'package:girls_fashion_store/controllers/product_detail_screen_controller/product_detail_screen_controller.dart';
+import 'package:girls_fashion_store/models/product_detail_screen_model/get_product_review_model.dart';
 import 'package:girls_fashion_store/screens/cart_screen/cart_screen.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -518,23 +520,25 @@ class AllRatingsModule extends StatelessWidget {
             ListView.builder(
               physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
-              itemCount: productDetailScreenController.ratingLists.length,
+              itemCount: productDetailScreenController.productReviewList.length,
               itemBuilder: (context, index) {
+                Datum1 productSingleReview =
+                productDetailScreenController.productReviewList[index];
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
-                        width: 65,
-                        height: 65,
-                        decoration: BoxDecoration(shape: BoxShape.circle),
-                        child: Image(
-                          image: AssetImage(productDetailScreenController
-                              .ratingLists[index].userProfilePic),
-                        ),
-                      ),
-                      const SpacerWidth(10),
+                      // Container(
+                      //   width: 65,
+                      //   height: 65,
+                      //   decoration: BoxDecoration(shape: BoxShape.circle),
+                      //   child: Image(
+                      //     image: AssetImage(productDetailScreenController
+                      //         .ratingLists[index].userProfilePic),
+                      //   ),
+                      // ),
+                      // const SpacerWidth(10),
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -543,8 +547,7 @@ class AllRatingsModule extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  productDetailScreenController
-                                      .ratingLists[index].userName,
+                                  "${productSingleReview.username}",
                                   style: TextStyle(
                                       // fontWeight: FontWeight.bold,
                                       fontSize: 15),
@@ -558,9 +561,7 @@ class AllRatingsModule extends StatelessWidget {
                                   itemSize: 18,
                                   minRating: 1,
                                   glow: false,
-                                  initialRating: double.parse(
-                                      productDetailScreenController
-                                          .ratingLists[index].productRating),
+                                  initialRating: 4.5,
                                   itemBuilder: (context, _) {
                                     return Icon(
                                       Icons.star_rounded,
@@ -574,15 +575,13 @@ class AllRatingsModule extends StatelessWidget {
                               ],
                             ),
                             Text(
-                              productDetailScreenController
-                                  .ratingLists[index].date,
+                              "${productSingleReview.createdDate.day} ${productSingleReview.createdDate.month} ${productSingleReview.createdDate.year}",
                               style: TextStyle(
                                 color: Colors.grey,
                               ),
                             ),
                             Text(
-                              productDetailScreenController
-                                  .ratingLists[index].productReview,
+                              "${productSingleReview.ratings}",
                               maxLines: 3,
                               overflow: TextOverflow.ellipsis,
                             )
@@ -606,86 +605,91 @@ class LeaveCommentModule extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'Leave A Comment',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-        ),
-        const SpacerHeight(8),
-        RatingBar.builder(
-          itemCount: 5,
-          // ignoreGestures: true,
-          unratedColor: AppColor.kLightOrangeColor,
-          allowHalfRating: true,
-          itemSize: 18,
-          minRating: 0,
-          glow: false,
-          initialRating: 0,
-          itemBuilder: (context, _) {
-            return Icon(
-              Icons.star_rounded,
-              color: AppColor.kOrangeColor,
-            );
-          },
-          onRatingUpdate: (rating) {
-            productDetailScreenController.ratingValue.value = rating;
-            print(rating);
-          },
-        ),
-        const SpacerHeight(8),
-        Text('Your Comment'),
-        const SpacerHeight(8),
-        TextFormField(
-          maxLines: 3,
-          cursorColor: Colors.black,
-          controller: productDetailScreenController.commentController,
-          decoration: InputDecoration(
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
+    return Form(
+      key: productDetailScreenController.formKey,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Leave A Comment',
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+          ),
+          const SpacerHeight(8),
+          RatingBar.builder(
+            itemCount: 5,
+            // ignoreGestures: true,
+            unratedColor: AppColor.kLightOrangeColor,
+            allowHalfRating: true,
+            itemSize: 18,
+            minRating: 0,
+            glow: false,
+            initialRating: 0,
+            itemBuilder: (context, _) {
+              return Icon(
+                Icons.star_rounded,
+                color: AppColor.kOrangeColor,
+              );
+            },
+            onRatingUpdate: (rating) {
+              productDetailScreenController.ratingValue.value = rating;
+              print(rating);
+            },
+          ),
+          const SpacerHeight(8),
+          Text('Your Comment'),
+          const SpacerHeight(8),
+          TextFormField(
+            maxLines: 3,
+            cursorColor: Colors.black,
+            controller: productDetailScreenController.commentController,
+            decoration: InputDecoration(
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
             ),
           ),
-        ),
-        const SpacerHeight(8),
-        GestureDetector(
-          onTap: () {
-            if (productDetailScreenController.ratingValue.value == 0.0) {
-              print('Min. Rating 1');
-            } else {
-              print(
-                  'Rating : ${productDetailScreenController.ratingValue.value}');
-              print(
-                  'Comment : ${productDetailScreenController.commentController.text.trim()}');
-            }
-          },
-          child: Container(
-            width: Get.width * 0.35,
-            decoration: BoxDecoration(
-              color: AppColor.kPinkColor,
-              borderRadius: BorderRadius.circular(30),
-            ),
-            child: Center(
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 22, vertical: 10),
-                child: Text(
-                  'Submit',
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    color: Colors.white,
-                    // fontSize: 15,
+          const SpacerHeight(8),
+          GestureDetector(
+            onTap: () {
+              if(productDetailScreenController.formKey.currentState!.validate()){
+                if (productDetailScreenController.ratingValue.value == 0.0) {
+                  Fluttertoast.showToast(msg: 'Minimum rating 1');
+                } else {
+                  productDetailScreenController.addProductReview(
+                    "${productDetailScreenController.ratingValue.value}",
+                    "${productDetailScreenController.commentController.text.trim()}",
+                  );
+                }
+              }
+            },
+            child: Container(
+              width: Get.width * 0.35,
+              decoration: BoxDecoration(
+                color: AppColor.kPinkColor,
+                borderRadius: BorderRadius.circular(30),
+              ),
+              child: Center(
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 22, vertical: 10),
+                  child: Text(
+                    'Submit',
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      color: Colors.white,
+                      // fontSize: 15,
+                    ),
                   ),
                 ),
               ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
