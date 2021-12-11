@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:girls_fashion_store/common/app_color.dart';
 import 'package:girls_fashion_store/common/img_url.dart';
 import 'package:girls_fashion_store/screens/contact_us_screen/contact_us_screen.dart';
+import 'package:girls_fashion_store/screens/edit_profile_screen/edit_profile_screen.dart';
 import 'package:girls_fashion_store/screens/setting_screen/setting_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -41,52 +42,57 @@ class ProfileScreen extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       child: Material(
         elevation: 10, borderRadius: BorderRadius.circular(10),
-        child: Container(
-          width: Get.width, height: 110,
-          padding: EdgeInsets.symmetric(horizontal: 10),
-          child: Row(
-            children: [
-              Container(
-                width: 90, height: 90,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  image: DecorationImage(
-                    image: AssetImage(ImgUrl.profile),
-                    fit: BoxFit.cover,
+        child: GestureDetector(
+          onTap: () {
+            Get.to(()=> EditProfileScreen());
+          },
+          child: Container(
+            width: Get.width, height: 110,
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            child: Row(
+              children: [
+                Container(
+                  width: 90, height: 90,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                      image: AssetImage(ImgUrl.profile),
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(width: 15),
-              Container(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Jenny Doe',
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          color: AppColor.kPinkColor,
-                          fontSize: 19,
-                          fontWeight: FontWeight.bold,
+                SizedBox(width: 15),
+                Container(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Jenny Doe',
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            color: AppColor.kPinkColor,
+                            fontSize: 19,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                      spacer(10),
-                      Text(
-                        'jenny@demo.com',
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 19,
-                          fontWeight: FontWeight.bold,
+                        spacer(10),
+                        Text(
+                          'jenny@demo.com',
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 19,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-              ),
-            ],
+                      ],
+                    ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

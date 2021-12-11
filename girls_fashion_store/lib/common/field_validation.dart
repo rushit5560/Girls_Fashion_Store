@@ -4,10 +4,9 @@ class FieldValidator {
     if (value.isEmpty) {
       return 'Full name is Required';
     }
-
-    if (!RegExp(r"^[A-Z a-z-]{2,25}$").hasMatch(value)) {
-      return 'invalid first name';
-    }
+    // if (!RegExp(r"^[A-Z a-z-]{2,25}$").hasMatch(value)) {
+    //   return 'invalid first name';
+    // }
     return null;
   }
 
