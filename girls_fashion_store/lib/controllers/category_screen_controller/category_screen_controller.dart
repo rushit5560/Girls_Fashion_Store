@@ -8,7 +8,7 @@ import 'package:http/http.dart' as http;
 class CategoryScreenController extends GetxController {
   RxBool isLoading = false.obs;
   RxBool isStatus = false.obs;
-  RxList<Datum> categoryLists = RxList();
+  RxList<DatumCategory> categoryLists = RxList();
 
   getCategoryData() async {
     isLoading(true);

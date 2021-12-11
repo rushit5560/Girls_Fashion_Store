@@ -21,14 +21,14 @@ class CategoryListModule extends StatelessWidget {
         crossAxisSpacing: 10,
       ),
       itemBuilder: (context, index) {
-        Datum categorySingleItem =
+        DatumCategory categorySingleItem =
             categoryScreenController.categoryLists[index];
         return _categoryListTile(categorySingleItem);
       },
     );
   }
 
-  Widget _categoryListTile(Datum categorySingleItem) {
+  Widget _categoryListTile(DatumCategory categorySingleItem) {
     final imgUrl = ApiUrl.ApiMainPath + "${categorySingleItem.showimg}";
     return Material(
       elevation: 10,

@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:girls_fashion_store/common/api_url.dart';
 import 'package:girls_fashion_store/common/img_url.dart';
 import 'package:girls_fashion_store/models/home_screen_model/banner_model.dart';
+import 'package:girls_fashion_store/models/home_screen_model/featured_product_model.dart';
 import 'package:girls_fashion_store/models/home_screen_model/popular_product_model.dart';
 import 'package:http/http.dart' as http;
 
@@ -14,6 +15,7 @@ class HomeScreenController extends GetxController {
   RxBool isStatus = false.obs;
   RxInt activeIndex = 0.obs;
   RxList<Datum> bannerLists = RxList();
+    RxList<Datum1> featuredProductLists = RxList();
 
   RxDouble xOffset = 0.0.obs;
   RxDouble yOffset = 0.0.obs;
@@ -40,9 +42,33 @@ class HomeScreenController extends GetxController {
     } catch(e) {
       print('Banner Error : $e');
     } finally {
+      // isLoading(false);
+      getFeaturedProductData();
+    }
+
+  }
+
+  getFeaturedProductData() async {
+    isLoading(true);
+    String url = ApiUrl.FeaturedProductApi;
+    print('Url : $url');
+
+    try{
+      http.Response response = await http.get(Uri.parse(url));
+
+      FeaturedProductData featuredProductData = FeaturedProductData.fromJson(json.decode(response.body));
+      isStatus = featuredProductData.success.obs;
+
+      if(isStatus.value) {
+        featuredProductLists = featuredProductData.data.obs;
+      } else {
+        print('FeaturedProduct False False');
+      }
+    } catch(e) {
+      print('FeaturedProduct Error : $e');
+    } finally {
       isLoading(false);
     }
-    // getFeaturedProductData();
   }
 
 
@@ -51,60 +77,6 @@ class HomeScreenController extends GetxController {
     ImgUrl.category1, ImgUrl.category2, ImgUrl.category3,
     ImgUrl.category4, ImgUrl.category5, ImgUrl.category6,
     ImgUrl.category7, ImgUrl.category8, ImgUrl.category9,
-  ];
-
-  List<PopularProductModel> popularProductLists = [
-    PopularProductModel(
-      productImg: ImgUrl.product1,
-      productName: 'Product Name Here',
-      productPrice: '200',
-      isFavorite: false,
-    ),
-    PopularProductModel(
-      productImg: ImgUrl.product2,
-      productName: 'Product Name Here',
-      productPrice: '200',
-      isFavorite: false,
-    ),
-    PopularProductModel(
-      productImg: ImgUrl.product3,
-      productName: 'Product Name Here',
-      productPrice: '200',
-      isFavorite: false,
-    ),
-    PopularProductModel(
-      productImg: ImgUrl.product4,
-      productName: 'Product Name Here',
-      productPrice: '200',
-      isFavorite: false,
-    ),
-  ];
-
-  List<PopularProductModel> mostSaleList = [
-    PopularProductModel(
-      productImg: ImgUrl.product5,
-      productName: 'Product Name Here',
-      productPrice: '200',
-      isFavorite: false,
-    ),
-    PopularProductModel(
-      productImg: ImgUrl.product6,
-      productName: 'Product Name Here',
-      productPrice: '200',
-      isFavorite: false,
-    ),
-    PopularProductModel(
-      productImg: ImgUrl.product4,
-      productName: 'Product Name Here',
-      productPrice: '200',
-      isFavorite: false,
-    ),
-    PopularProductModel(
-      productImg: ImgUrl.product2,
-      productName: 'Product Name Here',
-      productPrice: '200',
-      isFavorite: false,
-    ),
   ];
 
 

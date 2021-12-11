@@ -12,12 +12,12 @@ class CategoryData {
   });
 
   bool success;
-  List<Datum> data;
+  List<DatumCategory> data;
   String message;
 
   factory CategoryData.fromJson(Map<String, dynamic> json) => CategoryData(
     success: json["success"],
-    data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
+    data: List<DatumCategory>.from(json["data"].map((x) => DatumCategory.fromJson(x))),
     message: json["message"],
   );
 
@@ -28,8 +28,8 @@ class CategoryData {
   };
 }
 
-class Datum {
-  Datum({
+class DatumCategory {
+  DatumCategory({
     required this.categoryId,
     required this.categoryName,
     required this.categoryMetaTitle,
@@ -61,7 +61,7 @@ class Datum {
   int modifiedBy;
   String showimg;
 
-  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+  factory DatumCategory.fromJson(Map<String, dynamic> json) => DatumCategory(
     categoryId: json["categoryID"],
     categoryName: json["categoryName"] == null ? "" : json["categoryName"],
     categoryMetaTitle: json["categoryMetaTitle"] == null ? "" : json["categoryMetaTitle"],
