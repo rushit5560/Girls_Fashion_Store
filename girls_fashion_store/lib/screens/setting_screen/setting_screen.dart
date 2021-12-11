@@ -1,20 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:girls_fashion_store/common/app_color.dart';
+import 'package:get/get.dart';
+import 'package:girls_fashion_store/common/custom_widget.dart';
+import 'package:girls_fashion_store/controllers/setting_screen_controller/setting_screen_controller.dart';
+import 'setting_screen_widgets.dart';
 
-class SettingScreen extends StatefulWidget {
-  const SettingScreen({Key? key}) : super(key: key);
-
-  @override
-  _SettingScreenState createState() => _SettingScreenState();
-}
-
-class _SettingScreenState extends State<SettingScreen> {
-  bool _availability = false;
-  bool _notification = false;
-  bool _sendSMS = false;
-  bool _nightMode = false;
-
+class SettingScreen extends StatelessWidget {
+  final settingScreenController = Get.put(SettingScreenController());
 
   @override
   Widget build(BuildContext context) {
@@ -29,193 +21,20 @@ class _SettingScreenState extends State<SettingScreen> {
 
       body: Column(
         children: [
-          spacer(10),
-          availability(),
-          spacer(10),
-          notification(),
-          spacer(10),
-          sendSMS(),
-          spacer(10),
-          nightMode(),
-          spacer(10),
+          const SpacerHeight(10),
+          AvailabilityModule(),
+          const SpacerHeight(10),
+          NotificationModule(),
+          const SpacerHeight(10),
+          SendSMSModule(),
+          const SpacerHeight(10),
+          NightModeModule(),
+          const SpacerHeight(10),
+          ChangePasswordModule(),
+          const SpacerHeight(10),
         ],
       ),
     );
   }
 
-  Widget spacer(double value) {
-    return SizedBox(height: value);
-  }
-
-  Widget availability() {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Material(
-        elevation: 10,
-        borderRadius: BorderRadius.circular(15),
-        child: Container(
-          padding: EdgeInsets.symmetric(vertical: 5),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 8.0),
-                child: Text(
-                  'Availability',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                    fontSize: 16,
-                  ),
-                ),
-              ),
-              Transform.scale(
-                scale: 0.7,
-                child: CupertinoSwitch(
-                  activeColor: AppColor.kPinkColor,
-                  trackColor: Colors.grey,
-                  value: _availability,
-                  onChanged: (value) {
-                    setState(() {
-                      _availability = value;
-                      print('Availability : $_availability');
-                    });
-                  },
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget notification() {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Material(
-        elevation: 10,
-        borderRadius: BorderRadius.circular(15),
-        child: Container(
-          padding: EdgeInsets.symmetric(vertical: 5),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 8.0),
-                child: Text(
-                  'Notification',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                    fontSize: 16,
-                  ),
-                ),
-              ),
-              Transform.scale(
-                scale: 0.7,
-                child: CupertinoSwitch(
-                  activeColor: AppColor.kPinkColor,
-                  trackColor: Colors.grey,
-                  value: _notification,
-                  onChanged: (value) {
-                    setState(() {
-                      _notification = value;
-                      print('Notification : $_notification');
-                    });
-                  },
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget sendSMS() {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Material(
-        elevation: 10,
-        borderRadius: BorderRadius.circular(15),
-        child: Container(
-          padding: EdgeInsets.symmetric(vertical: 5),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 8.0),
-                child: Text(
-                  'Send SMS',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                    fontSize: 16,
-                  ),
-                ),
-              ),
-              Transform.scale(
-                scale: 0.7,
-                child: CupertinoSwitch(
-                  activeColor: AppColor.kPinkColor,
-                  trackColor: Colors.grey,
-                  value: _sendSMS,
-                  onChanged: (value) {
-                    setState(() {
-                      _sendSMS = value;
-                      print('Send SMS : $_sendSMS');
-                    });
-                  },
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget nightMode() {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Material(
-        elevation: 10,
-        borderRadius: BorderRadius.circular(15),
-        child: Container(
-          padding: EdgeInsets.symmetric(vertical: 5),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 8.0),
-                child: Text(
-                  'Night Mode',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                    fontSize: 16,
-                  ),
-                ),
-              ),
-              Transform.scale(
-                scale: 0.7,
-                child: CupertinoSwitch(
-                  activeColor: AppColor.kPinkColor,
-                  trackColor: Colors.grey,
-                  value: _nightMode,
-                  onChanged: (value) {
-                    setState(() {
-                      _nightMode = value;
-                      print('Night Mode : $_nightMode');
-                    });
-                  },
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
 }
