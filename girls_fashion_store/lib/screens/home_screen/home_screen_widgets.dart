@@ -166,7 +166,7 @@ class CategoryListModule extends StatelessWidget {
                   color: Colors.white,
                   child: GestureDetector(
                     onTap: () {
-                      Get.to(()=> CategoryScreen());
+                      Get.to(() => CategoryScreen());
                     },
                     child: Container(
                       height: 80,
@@ -375,7 +375,7 @@ class MostSaleProductsModule extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
               Datum1 singleItem =
-              homeScreenController.featuredProductLists[index];
+                  homeScreenController.featuredProductLists[index];
               String imgUrl = "${ApiUrl.ApiMainPath}" + singleItem.showimg;
               return Padding(
                 padding: const EdgeInsets.only(top: 10, bottom: 10, right: 10),
@@ -383,12 +383,15 @@ class MostSaleProductsModule extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                   elevation: 10,
                   child: GestureDetector(
-                    onTap: () {Get.to(()=> ProductDetailScreen(), arguments: singleItem.id);},
+                    onTap: () {
+                      Get.to(() => ProductDetailScreen(),
+                          arguments: singleItem.id);
+                    },
                     child: Container(
                       padding: EdgeInsets.all(8),
                       width: Get.width * 0.60,
-                      decoration:
-                          BoxDecoration(borderRadius: BorderRadius.circular(10)),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10)),
                       child: Row(
                         children: [
                           Container(
@@ -396,7 +399,7 @@ class MostSaleProductsModule extends StatelessWidget {
                             width: 70,
                             decoration: BoxDecoration(
                               image: DecorationImage(
-                                  image: NetworkImage("$imgUrl"),
+                                image: NetworkImage("$imgUrl"),
                               ),
                             ),
                           ),

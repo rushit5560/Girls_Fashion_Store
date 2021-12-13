@@ -15,7 +15,7 @@ class EditProfileScreen extends StatelessWidget {
 
       appBar: AppBar(
         title: Text(
-          'Contact Us',
+          'Edit Profile',
           style: TextStyle(color: Colors.black),
         ),
       ),

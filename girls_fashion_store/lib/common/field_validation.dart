@@ -71,4 +71,31 @@ class FieldValidator {
     }
     return null;
   }
+
+  String? validateCardNumber(String number) {
+    if(number.isEmpty){
+      return 'Card Number Not be Empty';
+    } else if(number.length != 16) {
+      return 'Card Number not Valid';
+    }
+    return null;
+  }
+
+  String? validateCardExpiryDate(String expDate) {
+    if(expDate.isEmpty) {
+      return 'Date not be Empty';
+    } else if(expDate.length != 5) {
+      return 'Date Not Valid';
+    }
+    return null;
+  }
+
+  String? validateCardCvv(String cardCvv) {
+    if(cardCvv.isEmpty){
+      return 'Enter CVV Code';
+    } else if(cardCvv.length != 3){
+      return 'Enter Valid CVV';
+    }
+    return null;
+  }
 }

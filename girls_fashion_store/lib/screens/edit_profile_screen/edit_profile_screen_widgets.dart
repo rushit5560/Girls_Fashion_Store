@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:girls_fashion_store/common/app_color.dart';
 import 'package:girls_fashion_store/common/custom_widget.dart';
@@ -159,14 +160,26 @@ class UpdateButton extends StatelessWidget {
   final editProfileScreenController = Get.find<EditProfileScreenController>();
 
 
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         if (editProfileScreenController.formKey.currentState!.validate()) {
-          editProfileScreenController.updateProfileData(
-            "${editProfileScreenController.fullNameController.text.trim()}",
-          );
+          if (editProfileScreenController.countryDropDownValue!.id == 0) {
+            Fluttertoast.showToast(
+                msg: 'Please Select Country', toastLength: Toast.LENGTH_LONG);
+          } else if (editProfileScreenController.stateDropDownValue!.id == 0) {
+            Fluttertoast.showToast(
+                msg: 'Please Select State', toastLength: Toast.LENGTH_LONG);
+          } else if (editProfileScreenController.cityDropDownValue!.id == 0) {
+            Fluttertoast.showToast(
+                msg: 'Please Select City', toastLength: Toast.LENGTH_LONG);
+          } else {
+            editProfileScreenController.updateProfileData(
+              "${editProfileScreenController.fullNameController.text.trim()}",
+            );
+          }
         }
       },
       child: Container(

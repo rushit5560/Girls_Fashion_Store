@@ -14,7 +14,7 @@ class EditProfileScreenController extends GetxController {
   RxBool isLoading = false.obs;
   RxBool isStatus = false.obs;
   var userId;
-  GlobalKey<FormState> formKey = GlobalKey();
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
   TextEditingController fullNameController = TextEditingController();
   Datum? countryDropDownValue;
   DatumState? stateDropDownValue;
@@ -117,7 +117,7 @@ class EditProfileScreenController extends GetxController {
     String url = ApiUrl.UpdateUserProfileApi;
     print('Url : $url');
 
-    try{
+    try {
       Map data = {
         "userid": "$userId",
         "name": "$userName",
@@ -128,16 +128,18 @@ class EditProfileScreenController extends GetxController {
       print('data : $data');
 
       http.Response response = await http.post(Uri.parse(url), body: data);
-      UpdateProfileData updateProfileData = UpdateProfileData.fromJson(json.decode(response.body));
+      UpdateProfileData updateProfileData =
+          UpdateProfileData.fromJson(json.decode(response.body));
       isStatus = updateProfileData.success.obs;
 
-      if(isStatus.value){
+      if (isStatus.value) {
         Get.back();
         Get.snackbar('Success', '${updateProfileData.message}');
+        fullNameController.clear();
       } else {
         Get.snackbar('Failed', '${updateProfileData.message}');
       }
-    } catch(e){
+    } catch (e) {
       print('Update Profile Error : $e');
     } finally {
       isLoading(false);

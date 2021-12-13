@@ -5,6 +5,7 @@ import 'package:girls_fashion_store/common/custom_widget.dart';
 import 'package:girls_fashion_store/common/drawer_widget.dart';
 import 'package:girls_fashion_store/common/img_url.dart';
 import 'package:girls_fashion_store/controllers/home_screen_controller/home_screen_controller.dart';
+import 'package:girls_fashion_store/screens/cart_screen/cart_screen.dart';
 import 'home_screen_widgets.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -63,9 +64,7 @@ class BuildNewPage extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            onPressed: () {
-              print('Clicked On Cart Button');
-            },
+            onPressed: ()=> Get.to(()=> CartScreen()),
             icon: Icon(Icons.shopping_cart_rounded),
           ),
         ],
@@ -77,16 +76,16 @@ class BuildNewPage extends StatelessWidget {
           child: Column(
             children: [
               SearchBarModule(),
-              SpacerHeight(15),
+              const SpacerHeight(15),
               BannerModule(),
-              SpacerHeight(10),
+              const SpacerHeight(10),
               BannerIndicatorModule(),
-              SpacerHeight(20),
+              const SpacerHeight(20),
               CategoryListModule(),
               PopularProductsModule(),
-              SpacerHeight(20),
+              const SpacerHeight(20),
               SingleBannerModule(),
-              SpacerHeight(20),
+              const SpacerHeight(20),
               MostSaleProductsModule(),
             ],
           ),
@@ -98,9 +97,6 @@ class BuildNewPage extends StatelessWidget {
 
 class DrawerMenuWidget extends StatelessWidget {
   final homeScreenController = Get.find<HomeScreenController>();
-  // final VoidCallback openDrawer;
-
-  // DrawerMenuWidget({required this.openDrawer});
 
   @override
   Widget build(BuildContext context) {

@@ -76,30 +76,28 @@ class SignInAndSignUpTextModule extends StatelessWidget {
   }
 }
 
-InputDecoration formInputDecoration(String hintText, [Color? color]) {
+InputDecoration formInputDecoration([String? hintText, Color? color, double? radius]) {
   return InputDecoration(
     hintText: '$hintText',
     filled: true,
     fillColor: Colors.white,
-    errorStyle: TextStyle(
-      color: Colors.white,
-    ),
     isDense: true,
+    counterText: '',
     contentPadding: EdgeInsets.symmetric(horizontal: 15,vertical: 10),
     enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(30),
+      borderRadius: BorderRadius.circular(radius ?? 30),
       borderSide: BorderSide(color: color ?? Colors.transparent),
     ),
     focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(30),
+      borderRadius: BorderRadius.circular(radius ?? 30),
       borderSide: BorderSide(color: color ?? Colors.transparent),
     ),
     errorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(30),
+      borderRadius: BorderRadius.circular(radius ?? 30),
       borderSide: BorderSide(color: color ?? Colors.transparent),
     ),
     focusedErrorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(30),
+      borderRadius: BorderRadius.circular(radius ?? 30),
       borderSide: BorderSide(color: color ?? Colors.transparent),
     ),
   );
